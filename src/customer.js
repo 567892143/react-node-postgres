@@ -22,9 +22,7 @@ const CustomerTable = () => {
     fetchCustomers();
   }, []);
 
-  // Filter and sort logic remains the same
-
-  // Define sortedCustomers after fetching the data
+  
   const filteredCustomers = customer.filter(customer =>
     customer.customer_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     customer.location.toLowerCase().includes(searchQuery.toLowerCase())
@@ -54,7 +52,7 @@ const CustomerTable = () => {
     }
   });
 
-  // Pagination logic
+  // pagination logic
   const indexOfLastCustomer = currentPage * customersPerPage;
   const indexOfFirstCustomer = indexOfLastCustomer - customersPerPage;
   const currentCustomers = sortedCustomers.slice(indexOfFirstCustomer, indexOfLastCustomer);
@@ -112,7 +110,7 @@ const CustomerTable = () => {
           ))}
         </tbody>
       </table>
-      {/* Pagination */}
+    
       <div className="flex justify-center mt-4">
         {Array.from({ length: Math.ceil(sortedCustomers.length / customersPerPage) }).map((_, index) => (
           <button key={index} onClick={() => paginate(index + 1)} className="mx-1 px-3 py-1 bg-blue-500 text-white rounded-md">

@@ -6,10 +6,9 @@ const { Pool } = require('pg');
 const app = express();
 const port = process.env.PORT || 3001;
 
-// Enable CORS middleware
+
 app.use(cors());
 
-// Database connection configuration
 const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
@@ -18,7 +17,7 @@ const pool = new Pool({
     port: 5432,
 });
 
-// Endpoint to fetch data from the database
+
 app.get('/api/customers', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM customers');
@@ -29,7 +28,7 @@ app.get('/api/customers', async (req, res) => {
     }
 });
 
-// Start the server
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
